@@ -15,6 +15,7 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "pvtl/voyager-blog": "^0.2.10",
+        "pvtl/voyager-forms": "^0.4.8",
         "pvtl/voyager-page-blocks": "^0.9.0",
         "pvtl/voyager-pages": "^0.2.13",
         "tcg/voyager": "^1.4"

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87fcb6e4b06e5e174f509c88b5482242",
+    "content-hash": "be6daf9d84cc23991abae935915c845d",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -3568,6 +3568,67 @@
                 "source": "https://github.com/pvtl/voyager-blog/tree/0.2.10"
             },
             "time": "2020-11-02T00:49:52+00:00"
+        },
+        {
+            "name": "pvtl/voyager-forms",
+            "version": "0.4.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pvtl/voyager-forms.git",
+                "reference": "98534bd002d1dbff2f8bd3d7f0c9c6a510c229fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pvtl/voyager-forms/zipball/98534bd002d1dbff2f8bd3d7f0c9c6a510c229fc",
+                "reference": "98534bd002d1dbff2f8bd3d7f0c9c6a510c229fc",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0|~7.0",
+                "pvtl/voyager-frontend": "^0.9|^1.0",
+                "tcg/voyager": "^1.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pvtl\\VoyagerForms\\Providers\\VoyagerFormsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "classmap": [],
+                "psr-4": {
+                    "Pvtl\\VoyagerForms\\": "src/",
+                    "Pvtl\\VoyagerForms\\Database\\": "database/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pivotal Agency",
+                    "email": "tech@pivotalagency.com.au",
+                    "homepage": "http://pivotalagency.com.au"
+                }
+            ],
+            "description": "Ahoy! - A package to implement forms into Voyager",
+            "keywords": [
+                "Forms",
+                "frontend",
+                "laravel",
+                "voyager"
+            ],
+            "support": {
+                "issues": "https://github.com/pvtl/voyager-forms/issues",
+                "source": "https://github.com/pvtl/voyager-forms/tree/0.4.8"
+            },
+            "time": "2020-12-09T23:57:48+00:00"
         },
         {
             "name": "pvtl/voyager-frontend",

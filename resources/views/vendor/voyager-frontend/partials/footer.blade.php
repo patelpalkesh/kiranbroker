@@ -7,14 +7,14 @@
         </div>
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="footer_panel padding_bottom_half bottom20"> 
+                <div class="footer_panel padding_bottom_half bottom20">
                     <h3 class="whitecolor bottom25">We are Kiran Broker</h3>
-                    <p class="whitecolor bottom25">Keep away from people who try to belittle your ambitions Small people always do that but the really great Friendly.</p> 
+                    <p class="whitecolor bottom25">Keep away from people who try to belittle your ambitions Small people always do that but the really great Friendly.</p>
                     <ul class="social-icons mb-sm-0 wow fadeInUp" data-wow-delay="300ms">
                         <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i> </a> </li>
                         <li><a href="javascript:void(0)"><i class="fab fa-twitter"></i> </a> </li>
                         <li><a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i> </a> </li>
-                        <li><a href="javascript:void(0)"><i class="fab fa-instagram"></i> </a> </li> 
+                        <li><a href="javascript:void(0)"><i class="fab fa-instagram"></i> </a> </li>
                     </ul>
                 </div>
             </div>
@@ -33,12 +33,16 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer_panel padding_bottom_half bottom20">
                     <h3 class="whitecolor bottom25">Quick Links</h3>
+
                     <ul class="links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Properties</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Contact Us</a></li> 
+                        @foreach(menu('primary') as $menu_item)
+                            @php ($hasChildren = count($menu_item->children) > 0)
+                            <li>
+                                <a  href="{{ $menu_item->link() }}">{{ $menu_item->title }}</a>
+                            </li>
+                        @endforeach
+
+
                     </ul>
                 </div>
             </div>
@@ -47,7 +51,7 @@
                     <h3 class="whitecolor bottom25">Official Info</h3>
                     <span><i class="fas fa-map-marker-alt"></i><p class="whitecolor bottom25">8604 Cliff Cameron Drive, charlotte,nc 28269</p> </span>
                     <span><i class="fas fa-mobile-alt"></i><p class="whitecolor bottom25">(704) 293 1105</p> </span>
-                    <span><i class="fas fa-envelope"></i><p class="whitecolor bottom25"><a href="mailto:info@kiranbroker.com">info@kiranbroker.com</a></p> </span> 
+                    <span><i class="fas fa-envelope"></i><p class="whitecolor bottom25"><a href="mailto:info@kiranbroker.com">info@kiranbroker.com</a></p> </span>
                 </div>
             </div>
         </div>
