@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 		Laravel\Tinker\TinkerServiceProvider::class,
 		TCG\Voyager\VoyagerServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -227,7 +228,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'DbView' => 'Flynsarmy\DbBladeCompiler\Facades\DbView',
+        'Helpers' => App\Helpers\Helpers::class,
     ],
 
 ];

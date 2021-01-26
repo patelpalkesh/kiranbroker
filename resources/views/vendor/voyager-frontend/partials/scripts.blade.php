@@ -1,3 +1,6 @@
+
+
+
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="{{ asset('asset/js/jquery-3.4.1.min.js') }}"></script>
 <!--Bootstrap Core-->
@@ -34,7 +37,9 @@
 <script src="{{ asset('asset/js/revolution/extensions/revolution.extension.video.min.js') }}"></script>
 <!--custom functions and script-->
 <script src="{{ asset('asset/js/functions.js') }}" type="text/javascript"></script>
-<script src="{{ asset('asset/js/typed.js') }}" type="text/javascript"></script>  
+<script src="{{ asset('asset/js/typed.js') }}" type="text/javascript"></script>
+<script src="{{ asset('asset/js/jquery.validate.min.js') }}" type="text/javascript"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LcL9bUZAAAAAFAO_038eCcWmTbn2kZVLu25h7XE"></script>
 <script>
 $("#banner-images-slider").owlCarousel({
         items: 1,
@@ -107,3 +112,175 @@ $("#services-slider").owlCarousel({
         toggleLoop(typednew);
     });
 </script>
+<script>
+    (function(jQuery,W,D)
+    {
+        var JQUERY4U = {};
+
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                //form validation rules
+                jQuery("#agreement-form").validate({
+                    rules: {
+                        FirstName: "required" ,
+                        LastName: "required" ,
+                        TermsConditions: "required" ,
+                        Phone: {
+                            required: true,
+                            minlength: 10
+                        },
+                        Email: {
+                            required: true,
+                        },City: {
+                            required: true,
+                        },State : {
+                            required: true,
+                        },Address: {
+                            required: true,
+                        }, ZIPCode: {
+                            required: true,
+                        }, SignInitial: {
+                            required: true,
+                        },
+
+                    },
+                    messages: {
+                        FirstName: "First name required." ,
+                        LastName:  "Last name required." ,
+                        City:  "City required." ,
+                        State :  "State  required." ,
+                        Address:  "Address required." ,
+                        ZIPCode:  "ZIP code required." ,
+                        SignInitial:  "Sign initial required." ,
+                        TermsConditions:  "Please select terms & conditions." ,
+                        Phone: {
+                            required: "Phone required.",
+                            minlength: "Please provide a valid mobile number"
+                        },
+                         Email: {
+                            required: "Please enter your email.",
+                            email: "Please enter a valid email.",
+                            remote: "Email already in use!"
+                        },
+
+                    },
+                    submitHandler: function(form) {
+
+                        submit_form();
+                        return false;
+                        //form.submit();
+                    }
+                });
+
+
+                return false;
+            }
+        }
+
+    //jQuery("#trid"+i+" .checkeditor").rules('add', { required: true , messages: { required: "Please Select Editor", } });
+        //when the dom has loaded setup form validation rules
+        jQuery(D).ready(function(jQuery) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+
+
+    function submit_form(){
+            jQuery(".preloader").show();
+            jQuery("#agreement-form input[name='task']").val('agreement_form');
+            var data = new FormData(jQuery("#agreement-form")[0]);
+            jQuery.ajax({
+                type:"POST",
+                url:'AgreementForm-Create',
+                data:data,
+                processData: false,
+                contentType: false,
+                success: function(data){
+                    var data = JSON.parse(data);
+                        jQuery(".preloader").hide();
+                        if(data.result){
+                            jQuery("#msg").html('<div class="alert alert-success">'+data.message+'</div>');
+                            document.getElementById("agreement-form").reset();
+                        window.location.href='#main';
+                        }else{
+                            jQuery("#msg").html('<div class="alert alert-danger">'+data.message+'</div>');
+                            window.location.href='#main';
+                        }
+
+                }
+            });
+            return false;
+    }
+    function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+
+    function CallConfidentialStatement(para,data){
+     var checkBox = document.getElementById("TermsConditions");
+      if(para=='get'){
+          if (checkBox.checked == true){
+            GetTextConfidentialStatement();
+            jQuery("#Confidential-Statement").modal();
+          }
+          checkBox.checked  =false;
+          jQuery("#frm-submit").trigger("submit");
+            var fields = jQuery('input.error');
+            if(fields.length > 1){
+                 jQuery('#btn-ok').prop('disabled', true);
+            }else{
+                jQuery('#btn-ok').removeAttr("disabled");
+            }
+
+      }
+     if(para=="ok"){
+      jQuery("#Confidential-Statement").modal('hide');
+      jQuery("#TermsConditions-error").html('');
+      checkBox.checked  =true;
+     }
+     if(para=="cancel"){
+      jQuery("#Confidential-Statement").modal('hide');
+      checkBox.checked  =false;
+      jQuery(".preloader").hide();
+     }
+    }
+    function GetTextConfidentialStatement(){
+		jQuery(".preloader").show();
+		jQuery("#agreement-form input[name='task']").val('GetModalText');
+
+		var data = new FormData(jQuery("#agreement-form")[0]);
+		jQuery.ajax({
+            type:"POST",
+            url:'get-signature',
+            data:data,
+			processData: false,
+			contentType: false,
+            success: function(data){
+				//var data = JSON.parse(data);
+					jQuery(".preloader").hide();
+					if(data.result){
+						jQuery("#Confidential-Statement-view").html(data.ConfidentialStatement);
+						jQuery("#agreement-form textarea[name='ConfidentialStatement']").val(data.ConfidentialStatement);
+						jQuery(".preloader").hide();
+					}
+            }
+        });
+		return false;
+}
+
+    </script>
+ <script>
+            grecaptcha.ready(function () {
+                grecaptcha.execute('6LcL9bUZAAAAAFAO_038eCcWmTbn2kZVLu25h7XE', { action: 'contact' }).then(function (token) {
+                    var recaptchaResponse = document.getElementById('recaptchaResponse');
+                    recaptchaResponse.value = token;
+                });
+            });
+ </script>
