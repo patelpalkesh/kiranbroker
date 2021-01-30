@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('get-signature', 'App\Http\Controllers\AgreementFormController@get_signature');
 //Route::post('get-signature', [AgreementFormController::class, 'get_signature']);
-Route::post('/AgreementForm-Create', [AgreementFormController::class, 'store']);
+Route::post('/AgreementForm-Create', 'App\Http\Controllers\AgreementFormController@store');
 
 
 

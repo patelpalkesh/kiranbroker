@@ -1727,7 +1727,7 @@ ul.links li a::before,
 
 .navbar {
     padding: 0.35rem 0;
-    z-index: 1000;
+    z-index: 9999;
 }
 
 .transparent-bg {

@@ -124,42 +124,42 @@ $("#services-slider").owlCarousel({
                 //form validation rules
                 jQuery("#agreement-form").validate({
                     rules: {
-                        FirstName: "required" ,
-                        LastName: "required" ,
-                        TermsConditions: "required" ,
-                        Phone: {
+                        first_name: "required" ,
+                        last_name: "required" ,
+                        terms_conditions: "required" ,
+                        phone: {
                             required: true,
                             minlength: 10
                         },
-                        Email: {
+                        email: {
                             required: true,
-                        },City: {
+                        },city: {
                             required: true,
-                        },State : {
+                        },state : {
                             required: true,
-                        },Address: {
+                        },address: {
                             required: true,
-                        }, ZIPCode: {
+                        },zip_code: {
                             required: true,
-                        }, SignInitial: {
+                        },sign_initial: {
                             required: true,
                         },
 
                     },
                     messages: {
-                        FirstName: "First name required." ,
-                        LastName:  "Last name required." ,
-                        City:  "City required." ,
-                        State :  "State  required." ,
-                        Address:  "Address required." ,
-                        ZIPCode:  "ZIP code required." ,
-                        SignInitial:  "Sign initial required." ,
-                        TermsConditions:  "Please select terms & conditions." ,
-                        Phone: {
+                        first_name: "First name required." ,
+                        last_name:  "Last name required." ,
+                        city:  "City required." ,
+                        state :  "State  required." ,
+                        address:  "Address required." ,
+                        zip_ode:  "ZIP code required." ,
+                        sign_initial:  "Sign initial required." ,
+                        terms_conditions:  "Please select terms & conditions." ,
+                        phone: {
                             required: "Phone required.",
                             minlength: "Please provide a valid mobile number"
                         },
-                         Email: {
+                        email: {
                             required: "Please enter your email.",
                             email: "Please enter a valid email.",
                             remote: "Email already in use!"
@@ -267,7 +267,7 @@ $("#services-slider").owlCarousel({
 					jQuery(".preloader").hide();
 					if(data.result){
 						jQuery("#Confidential-Statement-view").html(data.ConfidentialStatement);
-						jQuery("#agreement-form textarea[name='ConfidentialStatement']").val(data.ConfidentialStatement);
+						jQuery("#agreement-form textarea[name='confidential_statement']").val(data.ConfidentialStatement);
 						jQuery(".preloader").hide();
 					}
             }
